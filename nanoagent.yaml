@@ -1,0 +1,38 @@
+_ > nanoagent.plugin.manifest.ManifestConfig:
+id: prompt-context-packer
+name: Prompt Context Packer
+version: 0.1.0
+status: ready
+nanoagent: ~=0.5.0
+
+runtime > nanoagent.plugin.manifest.RuntimeConfig:
+  type: mcp_stdio
+  command: [uv, run, --frozen, python, -m, plugin]
+
+permissions > nanoagent.plugin.manifest.PermissionsConfig:
+  network > nanoagent.plugin.manifest.NetworkConfig:
+    hosts: []
+  filesystem > nanoagent.plugin.manifest.FilesystemConfig:
+    write: [workspace]
+
+# One entry per contract.Tool; its input and output classes are contract.TOOLS's.
+tools > dict[contract.Tool, nanoagent.plugin.manifest.ToolConfig]:
+  list_candidates:
+    description: Return the student's code, the prompt's token budget and base size, and the retrieved example candidates with their similarity and token cost
+  render_prompt:
+    description: Write the explanation prompt with the given examples, in the given order, to prompts/<query_id>-<skill_level>.md and report its tokens
+  best_selection:
+    description: Find the selection with the largest similarity sum that fits the budget, by exhaustive search (the pack-context reference)
+
+# One entry per contract.Task; its input and output classes are contract.TASKS's.
+tasks > dict[contract.Task, nanoagent.plugin.manifest.TaskConfig]:
+  pack-context:
+    description: Choose which retrieved examples go into an explanation prompt to get the most similarity within a token budget
+    runner: agent
+    tools: [list_candidates, render_prompt]
+    reference: best_selection
+    instructions: |-
+      Call list_candidates with the query_id and skill_level. The prompt may have at most budget_tokens tokens; with no examples it has base_tokens, and each example adds its tokens.
+      Choose a set of candidates that maximises the sum of their similarities, subject to: each at most once, each with similarity at least min_similarity, and base_tokens plus the chosen examples' tokens at most budget_tokens. Adding the most similar examples first is not always best; compare combinations.
+      Order the chosen examples most similar first (ties by example_id), call render_prompt with them in that order, and check that within_budget is true.
+      Submit the query_id, the skill_level, the example_ids in that order, and the path, total_tokens and similarity_sum exactly as your last render_prompt call returned them.

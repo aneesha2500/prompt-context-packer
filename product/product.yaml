@@ -1,0 +1,11 @@
+_ > nanoagent.plugin.manifest.ProductConfig:
+tagline: "Fit the most useful examples into a prompt's token budget"
+summary: "For a student's code and the examples our MinHash-LSH retriever found for it, the agent chooses which examples go into the explanation prompt so their total similarity is as high as possible without breaking the token budget, then writes the prompt. The choice is checked against the best possible one, found by exhaustive search."
+highlights:
+  - "Real prompts for beginner, intermediate and advanced students"
+  - "Ten cases where adding the most similar examples first is not the best answer"
+  - "The written prompt file is re-counted token by token"
+steps:
+  - "Name a case from q01 to q10 and a student's skill level"
+  - "It weighs each example's similarity against its token cost and renders the prompt"
+  - "The verdict shows whether the selection is allowed and how close it is to the best"

@@ -1,0 +1,655 @@
+{
+ "description": "Prompt-packing instances: a student's code (an MBPP test problem) and the 8 most similar MBPP non-test examples by exact Jaccard similarity of AST 4-shingles, with a token budget for the examples.",
+ "queries": [
+  {
+   "query_id": "q01",
+   "mbpp_id": "mbpp-331",
+   "student_code": "def count_unset_bits(n): \n    count = 0\n    x = 1\n    while(x < n + 1): \n        if ((x & n) == 0): \n            count += 1\n        x = x << 1\n    return count  ",
+   "example_budget": 252,
+   "min_similarity": 0.15,
+   "candidates": [
+    {
+     "example_id": "mbpp-622",
+     "description": "Write a function to find the median of two sorted arrays of same size.",
+     "code": "def get_median(arr1, arr2, n):\n  i = 0\n  j = 0\n  m1 = -1\n  m2 = -1\n  count = 0\n  while count < n + 1:\n    count += 1\n    if i == n:\n      m1 = m2\n      m2 = arr2[0]\n      break\n    elif j == n:\n      m1 = m2\n      m2 = arr1[0]\n      break\n    if arr1[i] <= arr2[j]:\n      m1 = m2\n      m2 = arr1[i]\n      i += 1\n    else:\n      m1 = m2\n      m2 = arr2[j]\n      j += 1\n  return (m1 + m2)/2",
+     "similarity": 0.206,
+     "tokens": 157
+    },
+    {
+     "example_id": "mbpp-511",
+     "description": "Write a python function to find minimum sum of factors of a given number.",
+     "code": "def find_Min_Sum(num): \n    sum = 0\n    i = 2\n    while(i * i <= num): \n        while(num % i == 0): \n            sum += i \n            num /= i \n        i += 1\n    sum += num \n    return sum",
+     "similarity": 0.188,
+     "tokens": 89
+    },
+    {
+     "example_id": "mbpp-547",
+     "description": "Write a python function to find the sum of hamming distances of all consecutive numbers from o to n.",
+     "code": "def Total_Hamming_Distance(n):   \n    i = 1\n    sum = 0\n    while (n // i > 0):  \n        sum = sum + n // i  \n        i = i * 2     \n    return sum",
+     "similarity": 0.182,
+     "tokens": 81
+    },
+    {
+     "example_id": "mbpp-768",
+     "description": "Write a python function to check for odd parity of a given number.",
+     "code": "def check_Odd_Parity(x): \n    parity = 0\n    while (x != 0): \n        x = x & (x - 1) \n        parity += 1\n    if (parity % 2 == 1): \n        return True\n    else: \n        return False",
+     "similarity": 0.174,
+     "tokens": 84
+    },
+    {
+     "example_id": "mbpp-855",
+     "description": "Write a python function to check for even parity of a given number.",
+     "code": "def check_Even_Parity(x): \n    parity = 0\n    while (x != 0): \n        x = x & (x - 1) \n        parity += 1\n    if (parity % 2 == 0): \n        return True\n    else: \n        return False",
+     "similarity": 0.174,
+     "tokens": 84
+    },
+    {
+     "example_id": "mbpp-868",
+     "description": "Write a python function to find the length of the last word in a given string.",
+     "code": "def length_Of_Last_Word(a): \n    l = 0\n    x = a.strip() \n    for i in range(len(x)): \n        if x[i] == \" \": \n            l = 0\n        else: \n            l += 1\n    return l ",
+     "similarity": 0.167,
+     "tokens": 89
+    },
+    {
+     "example_id": "mbpp-714",
+     "description": "Write a python function to count the number of distinct power of prime factor of given number.",
+     "code": "def count_Fac(n):  \n    m = n \n    count = 0\n    i = 2\n    while((i * i) <= m): \n        total = 0\n        while (n % i == 0): \n            n /= i \n            total += 1 \n        temp = 0\n        j = 1\n        while((temp + j) <= total): \n            temp += j \n            count += 1\n            j += 1 \n        i += 1\n    if (n != 1): \n        count += 1 \n    return count ",
+     "similarity": 0.161,
+     "tokens": 138
+    },
+    {
+     "example_id": "mbpp-853",
+     "description": "Write a python function to find sum of odd factors of a number.",
+     "code": "import math\ndef sum_of_odd_Factors(n): \n    res = 1\n    while n % 2 == 0: \n        n = n // 2 \n    for i in range(3,int(math.sqrt(n) + 1)): \n        count = 0\n        curr_sum = 1\n        curr_term = 1\n        while n % i == 0: \n            count+=1 \n            n = n // i \n            curr_term *= i \n            curr_sum += curr_term    \n        res *= curr_sum  \n    if n >= 2: \n        res *= (1 + n) \n    return res ",
+     "similarity": 0.149,
+     "tokens": 138
+    }
+   ]
+  },
+  {
+   "query_id": "q02",
+   "mbpp_id": "mbpp-464",
+   "student_code": "def check_value(dict, n):\n    result = all(x == n for x in dict.values()) \n    return result",
+   "example_budget": 188,
+   "min_similarity": 0.15,
+   "candidates": [
+    {
+     "example_id": "mbpp-878",
+     "description": "Write a function to check if the given tuple contains only k elements.",
+     "code": "def check_tuples(test_tuple, K):\n  res = all(ele in K for ele in test_tuple)\n  return (res) ",
+     "similarity": 0.304,
+     "tokens": 62
+    },
+    {
+     "example_id": "mbpp-695",
+     "description": "Write a function to check if each element of the second tuple is greater than its corresponding index in the first tuple.",
+     "code": "def check_greater(test_tup1, test_tup2):\n  res = all(x < y for x, y in zip(test_tup1, test_tup2))\n  return (res) ",
+     "similarity": 0.207,
+     "tokens": 78
+    },
+    {
+     "example_id": "mbpp-809",
+     "description": "Write a function to check if each element of second tuple is smaller than its corresponding index in first tuple.",
+     "code": "def check_smaller(test_tup1, test_tup2):\n  res = all(x > y for x, y in zip(test_tup1, test_tup2))\n  return (res) ",
+     "similarity": 0.207,
+     "tokens": 76
+    },
+    {
+     "example_id": "mbpp-825",
+     "description": "Write a python function to access multiple elements of specified index from a given list.",
+     "code": "def access_elements(nums, list_index):\n    result = [nums[i] for i in list_index]\n    return result",
+     "similarity": 0.167,
+     "tokens": 62
+    },
+    {
+     "example_id": "mbpp-551",
+     "description": "Write a function to extract a specified column from a given nested list.",
+     "code": "def extract_column(list1, n):\n   result = [i.pop(n) for i in list1]\n   return result ",
+     "similarity": 0.16,
+     "tokens": 62
+    },
+    {
+     "example_id": "mbpp-611",
+     "description": "Write a function to find the maximum of nth column from the given tuple list.",
+     "code": "def max_of_nth(test_list, N):\n  res = max([sub[N] for sub in test_list])\n  return (res) ",
+     "similarity": 0.154,
+     "tokens": 67
+    },
+    {
+     "example_id": "mbpp-827",
+     "description": "Write a function to sum a specific column of a list in a given list of lists.",
+     "code": "def sum_column(list1, C):\n    result = sum(row[C] for row in list1)\n    return result",
+     "similarity": 0.154,
+     "tokens": 65
+    },
+    {
+     "example_id": "mbpp-513",
+     "description": "Write a function to convert tuple into list by adding the given string after every element.",
+     "code": "def add_str(test_tup, K):\n  res = [ele for sub in test_tup for ele in (sub, K)]\n  return (res) ",
+     "similarity": 0.148,
+     "tokens": 70
+    }
+   ]
+  },
+  {
+   "query_id": "q03",
+   "mbpp_id": "mbpp-42",
+   "student_code": "def find_Sum(arr,n): \n    return sum([x for x in arr if arr.count(x) > 1])",
+   "example_budget": 133,
+   "min_similarity": 0.15,
+   "candidates": [
+    {
+     "example_id": "mbpp-724",
+     "description": "Write a function to calculate the sum of all digits of the base to the specified power.",
+     "code": "def power_base_sum(base, power):\n    return sum([int(i) for i in str(pow(base, power))])",
+     "similarity": 0.192,
+     "tokens": 72
+    },
+    {
+     "example_id": "mbpp-572",
+     "description": "Write a python function to remove two duplicate numbers from a given number of lists.",
+     "code": "def two_unique_nums(nums):\n  return [i for i in nums if nums.count(i)==1]",
+     "similarity": 0.174,
+     "tokens": 64
+    },
+    {
+     "example_id": "mbpp-558",
+     "description": "Write a python function to find the digit distance between two integers.",
+     "code": "def digit_distance_nums(n1, n2):\n         return sum(map(int,str(abs(n1-n2))))",
+     "similarity": 0.16,
+     "tokens": 63
+    },
+    {
+     "example_id": "mbpp-513",
+     "description": "Write a function to convert tuple into list by adding the given string after every element.",
+     "code": "def add_str(test_tup, K):\n  res = [ele for sub in test_tup for ele in (sub, K)]\n  return (res) ",
+     "similarity": 0.154,
+     "tokens": 70
+    },
+    {
+     "example_id": "mbpp-667",
+     "description": "Write a python function to count number of vowels in the string.",
+     "code": "def Check_Vow(string, vowels): \n    final = [each for each in string if each in vowels] \n    return(len(final)) \n",
+     "similarity": 0.154,
+     "tokens": 65
+    },
+    {
+     "example_id": "mbpp-578",
+     "description": "Write a function to interleave lists of the same length.",
+     "code": "def interleave_lists(list1,list2,list3):\n    result = [el for pair in zip(list1, list2, list3) for el in pair]\n    return result",
+     "similarity": 0.138,
+     "tokens": 67
+    },
+    {
+     "example_id": "mbpp-966",
+     "description": "Write a function to remove an empty tuple from a list of tuples.",
+     "code": "def remove_empty(tuple1): #L = [(), (), ('',), ('a', 'b'), ('a', 'b', 'c'), ('d')]\n   tuple1 = [t for t in tuple1 if t]\n   return tuple1",
+     "similarity": 0.136,
+     "tokens": 103
+    },
+    {
+     "example_id": "mbpp-869",
+     "description": "Write a function to remove sublists from a given list of lists, which are outside a given range.",
+     "code": "def remove_list_range(list1, leftrange, rigthrange):\n   result = [i for i in list1 if (min(i)>=leftrange and max(i)<=rigthrange)]\n   return result",
+     "similarity": 0.121,
+     "tokens": 83
+    }
+   ]
+  },
+  {
+   "query_id": "q04",
+   "mbpp_id": "mbpp-155",
+   "student_code": "def even_bit_toggle_number(n) : \n    res = 0; count = 0; temp = n \n    while (temp > 0) :     \n        if (count % 2 == 1) : \n            res = res | (1 << count)      \n        count = count + 1\n        temp >>= 1 \n    return n ^ res ",
+   "example_budget": 175,
+   "min_similarity": 0.15,
+   "candidates": [
+    {
+     "example_id": "mbpp-598",
+     "description": "Write a function to check whether the given number is armstrong or not.",
+     "code": "def armstrong_number(number):\n sum = 0\n times = 0\n temp = number\n while temp > 0:\n           times = times + 1\n           temp = temp // 10\n temp = number\n while temp > 0:\n           reminder = temp % 10\n           sum = sum + (reminder ** times)\n           temp //= 10\n if number == sum:\n           return True\n else:\n           return False",
+     "similarity": 0.233,
+     "tokens": 109
+    },
+    {
+     "example_id": "mbpp-781",
+     "description": "Write a python function to check whether the count of divisors is even or odd.",
+     "code": "import math \ndef count_Divisors(n) : \n    count = 0\n    for i in range(1, (int)(math.sqrt(n)) + 2) : \n        if (n % i == 0) : \n            if( n // i == i) : \n                count = count + 1\n            else : \n                count = count + 2\n    if (count % 2 == 0) : \n        return (\"Even\") \n    else : \n        return (\"Odd\") ",
+     "similarity": 0.179,
+     "tokens": 130
+    },
+    {
+     "example_id": "mbpp-768",
+     "description": "Write a python function to check for odd parity of a given number.",
+     "code": "def check_Odd_Parity(x): \n    parity = 0\n    while (x != 0): \n        x = x & (x - 1) \n        parity += 1\n    if (parity % 2 == 1): \n        return True\n    else: \n        return False",
+     "similarity": 0.167,
+     "tokens": 84
+    },
+    {
+     "example_id": "mbpp-855",
+     "description": "Write a python function to check for even parity of a given number.",
+     "code": "def check_Even_Parity(x): \n    parity = 0\n    while (x != 0): \n        x = x & (x - 1) \n        parity += 1\n    if (parity % 2 == 0): \n        return True\n    else: \n        return False",
+     "similarity": 0.167,
+     "tokens": 84
+    },
+    {
+     "example_id": "mbpp-903",
+     "description": "Write a python function to count the total unset bits from 1 to n.",
+     "code": "def count_Unset_Bits(n) :  \n    cnt = 0;  \n    for i in range(1,n + 1) : \n        temp = i;  \n        while (temp) :  \n            if (temp % 2 == 0) : \n                cnt += 1;  \n            temp = temp // 2;  \n    return cnt;  ",
+     "similarity": 0.155,
+     "tokens": 95
+    },
+    {
+     "example_id": "mbpp-541",
+     "description": "Write a function to find if the given number is abundant or not.",
+     "code": "import math \ndef get_sum(n): \n\tsum = 0\n\ti = 1\n\twhile i <= (math.sqrt(n)): \n\t\tif n%i == 0: \n\t\t\tif n/i == i : \n\t\t\t\tsum = sum + i \n\t\t\telse: \n\t\t\t\tsum = sum + i \n\t\t\t\tsum = sum + (n / i ) \n\t\ti = i + 1\n\tsum = sum - n \n\treturn sum\ndef check_abundant(n): \n\tif (get_sum(n) > n): \n\t\treturn True\n\telse: \n\t\treturn False",
+     "similarity": 0.134,
+     "tokens": 136
+    },
+    {
+     "example_id": "mbpp-547",
+     "description": "Write a python function to find the sum of hamming distances of all consecutive numbers from o to n.",
+     "code": "def Total_Hamming_Distance(n):   \n    i = 1\n    sum = 0\n    while (n // i > 0):  \n        sum = sum + n // i  \n        i = i * 2     \n    return sum",
+     "similarity": 0.13,
+     "tokens": 81
+    },
+    {
+     "example_id": "mbpp-634",
+     "description": "Write a python function to find the sum of fourth power of first n even natural numbers.",
+     "code": "def even_Power_Sum(n): \n    sum = 0; \n    for i in range(1,n + 1): \n        j = 2*i; \n        sum = sum + (j*j*j*j); \n    return sum; ",
+     "similarity": 0.121,
+     "tokens": 87
+    }
+   ]
+  },
+  {
+   "query_id": "q05",
+   "mbpp_id": "mbpp-239",
+   "student_code": "def get_total_number_of_sequences(m,n): \n\tT=[[0 for i in range(n+1)] for i in range(m+1)] \n\tfor i in range(m+1): \n\t\tfor j in range(n+1): \n\t\t\tif i==0 or j==0: \n\t\t\t\tT[i][j]=0\n\t\t\telif i<j: \n\t\t\t\tT[i][j]=0\n\t\t\telif j==1: \n\t\t\t\tT[i][j]=i \n\t\t\telse: \n\t\t\t\tT[i][j]=T[i-1][j]+T[i//2][j-1] \n\treturn T[m][n]",
+   "example_budget": 532,
+   "min_similarity": 0.15,
+   "candidates": [
+    {
+     "example_id": "mbpp-747",
+     "description": "Write a function to find the longest common subsequence for the given three string sequence.",
+     "code": "def lcs_of_three(X, Y, Z, m, n, o): \n\tL = [[[0 for i in range(o+1)] for j in range(n+1)] \n\t\tfor k in range(m+1)] \n\tfor i in range(m+1): \n\t\tfor j in range(n+1): \n\t\t\tfor k in range(o+1): \n\t\t\t\tif (i == 0 or j == 0 or k == 0): \n\t\t\t\t\tL[i][j][k] = 0\n\t\t\t\telif (X[i-1] == Y[j-1] and\n\t\t\t\t\tX[i-1] == Z[k-1]): \n\t\t\t\t\tL[i][j][k] = L[i-1][j-1][k-1] + 1\n\t\t\t\telse: \n\t\t\t\t\tL[i][j][k] = max(max(L[i-1][j][k], \n\t\t\t\t\tL[i][j-1][k]), \n\t\t\t\t\t\t\t\t\tL[i][j][k-1]) \n\treturn L[m][n][o]",
+     "similarity": 0.448,
+     "tokens": 282
+    },
+    {
+     "example_id": "mbpp-912",
+     "description": "Write a function to find ln, m lobb number.",
+     "code": "def binomial_coeff(n, k): \n\tC = [[0 for j in range(k + 1)] \n\t\t\tfor i in range(n + 1)] \n\tfor i in range(0, n + 1): \n\t\tfor j in range(0, min(i, k) + 1): \n\t\t\tif (j == 0 or j == i): \n\t\t\t\tC[i][j] = 1\n\t\t\telse: \n\t\t\t\tC[i][j] = (C[i - 1][j - 1] \n\t\t\t\t\t\t\t+ C[i - 1][j]) \n\treturn C[n][k] \ndef lobb_num(n, m): \n\treturn (((2 * m + 1) *\n\t\tbinomial_coeff(2 * n, m + n)) \n\t\t\t\t\t/ (m + n + 1))",
+     "similarity": 0.413,
+     "tokens": 199
+    },
+    {
+     "example_id": "mbpp-608",
+     "description": "Write a python function to find nth bell number.",
+     "code": "def bell_Number(n): \n    bell = [[0 for i in range(n+1)] for j in range(n+1)] \n    bell[0][0] = 1\n    for i in range(1, n+1):\n        bell[i][0] = bell[i-1][i-1]\n        for j in range(1, i+1): \n            bell[i][j] = bell[i-1][j-1] + bell[i][j-1] \n    return bell[n][0] ",
+     "similarity": 0.375,
+     "tokens": 154
+    },
+    {
+     "example_id": "mbpp-721",
+     "description": "Write a function to find a path with the maximum average over all existing paths for the given square matrix of size n*n.",
+     "code": "M = 100\ndef maxAverageOfPath(cost, N): \n\tdp = [[0 for i in range(N + 1)] for j in range(N + 1)] \n\tdp[0][0] = cost[0][0] \n\tfor i in range(1, N): \n\t\tdp[i][0] = dp[i - 1][0] + cost[i][0] \n\tfor j in range(1, N): \n\t\tdp[0][j] = dp[0][j - 1] + cost[0][j] \n\tfor i in range(1, N): \n\t\tfor j in range(1, N): \n\t\t\tdp[i][j] = max(dp[i - 1][j], \n\t\t\t\t\t\tdp[i][j - 1]) + cost[i][j] \n\treturn dp[N - 1][N - 1] / (2 * N - 1)",
+     "similarity": 0.319,
+     "tokens": 249
+    },
+    {
+     "example_id": "mbpp-1",
+     "description": "Write a function to find the minimum cost path to reach (m, n) from (0, 0) for the given cost matrix cost[][] and a position (m, n) in cost[][].",
+     "code": "R = 3\nC = 3\ndef min_cost(cost, m, n): \n\ttc = [[0 for x in range(C)] for x in range(R)] \n\ttc[0][0] = cost[0][0] \n\tfor i in range(1, m+1): \n\t\ttc[i][0] = tc[i-1][0] + cost[i][0] \n\tfor j in range(1, n+1): \n\t\ttc[0][j] = tc[0][j-1] + cost[0][j] \n\tfor i in range(1, m+1): \n\t\tfor j in range(1, n+1): \n\t\t\ttc[i][j] = min(tc[i-1][j-1], tc[i-1][j], tc[i][j-1]) + cost[i][j] \n\treturn tc[m][n]",
+     "similarity": 0.282,
+     "tokens": 279
+    },
+    {
+     "example_id": "mbpp-918",
+     "description": "Write a function to count coin change.",
+     "code": "def coin_change(S, m, n): \n    table = [[0 for x in range(m)] for x in range(n+1)] \n    for i in range(m): \n        table[0][i] = 1\n    for i in range(1, n+1): \n        for j in range(m): \n            x = table[i - S[j]][j] if i-S[j] >= 0 else 0\n            y = table[i][j-1] if j >= 1 else 0 \n            table[i][j] = x + y   \n    return table[n][m-1] ",
+     "similarity": 0.252,
+     "tokens": 167
+    },
+    {
+     "example_id": "mbpp-952",
+     "description": "Write a function to compute the value of ncr mod p.",
+     "code": "def nCr_mod_p(n, r, p): \n\tif (r > n- r): \n\t\tr = n - r \n\tC = [0 for i in range(r + 1)] \n\tC[0] = 1 \n\tfor i in range(1, n + 1): \n\t\tfor j in range(min(i, r), 0, -1): \n\t\t\tC[j] = (C[j] + C[j-1]) % p \n\treturn C[r] ",
+     "similarity": 0.143,
+     "tokens": 135
+    },
+    {
+     "example_id": "mbpp-620",
+     "description": "Write a function to find the largest subset where each pair is divisible.",
+     "code": "def largest_subset(a, n):\n\tdp = [0 for i in range(n)]\n\tdp[n - 1] = 1; \n\tfor i in range(n - 2, -1, -1):\n\t\tmxm = 0;\n\t\tfor j in range(i + 1, n):\n\t\t\tif a[j] % a[i] == 0 or a[i] % a[j] == 0:\n\t\t\t\tmxm = max(mxm, dp[j])\n\t\tdp[i] = 1 + mxm\n\treturn max(dp)",
+     "similarity": 0.138,
+     "tokens": 150
+    }
+   ]
+  },
+  {
+   "query_id": "q06",
+   "mbpp_id": "mbpp-492",
+   "student_code": "def binary_search(item_list,item):\n\tfirst = 0\n\tlast = len(item_list)-1\n\tfound = False\n\twhile( first<=last and not found):\n\t\tmid = (first + last)//2\n\t\tif item_list[mid] == item :\n\t\t\tfound = True\n\t\telse:\n\t\t\tif item < item_list[mid]:\n\t\t\t\tlast = mid - 1\n\t\t\telse:\n\t\t\t\tfirst = mid + 1\t\n\treturn found",
+   "example_budget": 308,
+   "min_similarity": 0.15,
+   "candidates": [
+    {
+     "example_id": "mbpp-733",
+     "description": "Write a function to find the index of the first occurrence of a given number in a sorted array.",
+     "code": "def find_first_occurrence(A, x):\n    (left, right) = (0, len(A) - 1)\n    result = -1\n    while left <= right:\n        mid = (left + right) // 2\n        if x == A[mid]:\n            result = mid\n            right = mid - 1\n        elif x < A[mid]:\n            right = mid - 1\n        else:\n            left = mid + 1\n    return result",
+     "similarity": 0.36,
+     "tokens": 127
+    },
+    {
+     "example_id": "mbpp-793",
+     "description": "Write a python function to find the last position of an element in a sorted array.",
+     "code": "def last(arr,x,n):\n    low = 0\n    high = n - 1\n    res = -1  \n    while (low <= high):\n        mid = (low + high) // 2 \n        if arr[mid] > x:\n            high = mid - 1\n        elif arr[mid] < x:\n            low = mid + 1\n        else:\n            res = mid\n            low = mid + 1\n    return res",
+     "similarity": 0.311,
+     "tokens": 119
+    },
+    {
+     "example_id": "mbpp-815",
+     "description": "Write a function to sort the given array without using any sorting algorithm. the given array consists of only 0, 1, and 2.",
+     "code": "def sort_by_dnf(arr, n):\n  low=0\n  mid=0\n  high=n-1\n  while mid <= high:\n    if arr[mid] == 0:\n      arr[low], arr[mid] = arr[mid], arr[low]\n      low = low + 1\n      mid = mid + 1\n    elif arr[mid] == 1:\n      mid = mid + 1\n    else:\n      arr[mid], arr[high] = arr[high], arr[mid]\n      high = high - 1\n  return arr",
+     "similarity": 0.297,
+     "tokens": 156
+    },
+    {
+     "example_id": "mbpp-666",
+     "description": "Write a function to count occurrence of a character in a string.",
+     "code": "def count_char(string,char):\n count = 0\n for i in range(len(string)):\n    if(string[i] == char):\n        count = count + 1\n return count",
+     "similarity": 0.206,
+     "tokens": 77
+    },
+    {
+     "example_id": "mbpp-938",
+     "description": "Write a function to find three closest elements from three sorted arrays.",
+     "code": "import sys \n\ndef find_closet(A, B, C, p, q, r): \n\tdiff = sys.maxsize \n\tres_i = 0\n\tres_j = 0\n\tres_k = 0\n\ti = 0\n\tj = 0\n\tk = 0\n\twhile(i < p and j < q and k < r): \n\t\tminimum = min(A[i], min(B[j], C[k])) \n\t\tmaximum = max(A[i], max(B[j], C[k])); \n\t\tif maximum-minimum < diff: \n\t\t\tres_i = i \n\t\t\tres_j = j \n\t\t\tres_k = k \n\t\t\tdiff = maximum - minimum; \n\t\tif diff == 0: \n\t\t\tbreak\n\t\tif A[i] == minimum: \n\t\t\ti = i+1\n\t\telif B[j] == minimum: \n\t\t\tj = j+1\n\t\telse: \n\t\t\tk = k+1\n\treturn A[res_i],B[res_j],C[res_k]",
+     "similarity": 0.173,
+     "tokens": 217
+    },
+    {
+     "example_id": "mbpp-543",
+     "description": "Write a function to add two numbers and print number of digits of sum.",
+     "code": "def count_digits(num1,num2):\n    number=num1+num2\n    count = 0\n    while(number > 0):\n        number = number // 10\n        count = count + 1\n    return count",
+     "similarity": 0.154,
+     "tokens": 75
+    },
+    {
+     "example_id": "mbpp-734",
+     "description": "Write a python function to find sum of products of all possible subarrays.",
+     "code": "def sum_Of_Subarray_Prod(arr,n):\n    ans = 0\n    res = 0\n    i = n - 1\n    while (i >= 0):\n        incr = arr[i]*(1 + res)\n        ans += incr\n        res = incr\n        i -= 1\n    return (ans)",
+     "similarity": 0.149,
+     "tokens": 92
+    },
+    {
+     "example_id": "mbpp-856",
+     "description": "Write a python function to find minimum adjacent swaps required to sort binary array.",
+     "code": "def find_Min_Swaps(arr,n) : \n    noOfZeroes = [0] * n \n    count = 0 \n    noOfZeroes[n - 1] = 1 - arr[n - 1] \n    for i in range(n-2,-1,-1) : \n        noOfZeroes[i] = noOfZeroes[i + 1] \n        if (arr[i] == 0) : \n            noOfZeroes[i] = noOfZeroes[i] + 1\n    for i in range(0,n) : \n        if (arr[i] == 1) : \n            count = count + noOfZeroes[i] \n    return count ",
+     "similarity": 0.149,
+     "tokens": 152
+    }
+   ]
+  },
+  {
+   "query_id": "q07",
+   "mbpp_id": "mbpp-322",
+   "student_code": "def position_min(list1):\n    min_val = min(list1)\n    min_result = [i for i, j in enumerate(list1) if j == min_val]\n    return min_result",
+   "example_budget": 245,
+   "min_similarity": 0.15,
+   "candidates": [
+    {
+     "example_id": "mbpp-875",
+     "description": "Write a function to find the minimum difference in the tuple pairs of given tuples.",
+     "code": "def min_difference(test_list):\n  temp = [abs(b - a) for a, b in test_list]\n  res = min(temp)\n  return (res) ",
+     "similarity": 0.242,
+     "tokens": 72
+    },
+    {
+     "example_id": "mbpp-966",
+     "description": "Write a function to remove an empty tuple from a list of tuples.",
+     "code": "def remove_empty(tuple1): #L = [(), (), ('',), ('a', 'b'), ('a', 'b', 'c'), ('d')]\n   tuple1 = [t for t in tuple1 if t]\n   return tuple1",
+     "similarity": 0.192,
+     "tokens": 103
+    },
+    {
+     "example_id": "mbpp-701",
+     "description": "Write a function to find the equilibrium index of the given array.",
+     "code": "def equilibrium_index(arr):\n  total_sum = sum(arr)\n  left_sum=0\n  for i, num in enumerate(arr):\n    total_sum -= num\n    if left_sum == total_sum:\n      return i\n    left_sum += num\n  return -1",
+     "similarity": 0.186,
+     "tokens": 81
+    },
+    {
+     "example_id": "mbpp-613",
+     "description": "Write a function to find the maximum value in record list as tuple attribute in the given tuple list.",
+     "code": "def maximum_value(test_list):\n  res = [(key, max(lst)) for key, lst in test_list]\n  return (res) ",
+     "similarity": 0.161,
+     "tokens": 72
+    },
+    {
+     "example_id": "mbpp-898",
+     "description": "Write a function to extract specified number of elements from a given list, which follow each other continuously.",
+     "code": "from itertools import groupby \ndef extract_elements(numbers, n):\n    result = [i for i, j in groupby(numbers) if len(list(j)) == n] \n    return result",
+     "similarity": 0.158,
+     "tokens": 83
+    },
+    {
+     "example_id": "mbpp-791",
+     "description": "Write a function to remove the nested record from the given tuple.",
+     "code": "def remove_nested(test_tup):\n  res = tuple()\n  for count, ele in enumerate(test_tup):\n    if not isinstance(ele, tuple):\n      res = res + (ele, )\n  return (res) ",
+     "similarity": 0.15,
+     "tokens": 79
+    },
+    {
+     "example_id": "mbpp-588",
+     "description": "Write a python function to find the difference between largest and smallest value in a given array.",
+     "code": "def big_diff(nums):\n     diff= max(nums)-min(nums)\n     return diff",
+     "similarity": 0.143,
+     "tokens": 61
+    },
+    {
+     "example_id": "mbpp-528",
+     "description": "Write a function to find the list of lists with minimum length.",
+     "code": "def min_length(list1):\n   min_length = min(len(x) for x in  list1 )  \n   min_list = min((x) for x in   list1)\n   return(min_length, min_list)     ",
+     "similarity": 0.135,
+     "tokens": 74
+    }
+   ]
+  },
+  {
+   "query_id": "q08",
+   "mbpp_id": "mbpp-211",
+   "student_code": "def count_Num(n): \n    if (n == 1): \n        return 1\n    count = pow(2,n - 2) \n    return count ",
+   "example_budget": 215,
+   "min_similarity": 0.15,
+   "candidates": [
+    {
+     "example_id": "mbpp-820",
+     "description": "Write a function to check whether the given month number contains 28 days or not.",
+     "code": "def check_monthnum_number(monthnum1):\n  if monthnum1 == 2:\n    return True\n  else:\n    return False",
+     "similarity": 0.263,
+     "tokens": 58
+    },
+    {
+     "example_id": "mbpp-577",
+     "description": "Write a python function to find the last digit in factorial of a given number.",
+     "code": "def last_Digit_Factorial(n): \n    if (n == 0): return 1\n    elif (n <= 2): return n  \n    elif (n == 3): return 6\n    elif (n == 4): return 4 \n    else: \n      return 0",
+     "similarity": 0.25,
+     "tokens": 90
+    },
+    {
+     "example_id": "mbpp-887",
+     "description": "Write a python function to check whether the given number is odd or not using bitwise operator.",
+     "code": "def is_odd(n) : \n    if (n^1 == n-1) :\n        return True; \n    else :\n        return False; ",
+     "similarity": 0.217,
+     "tokens": 68
+    },
+    {
+     "example_id": "mbpp-566",
+     "description": "Write a function to get the sum of a non-negative integer.",
+     "code": "def sum_digits(n):\n  if n == 0:\n    return 0\n  else:\n    return n % 10 + sum_digits(int(n / 10))",
+     "similarity": 0.214,
+     "tokens": 68
+    },
+    {
+     "example_id": "mbpp-960",
+     "description": "Write a function to solve tiling problem.",
+     "code": "def get_noOfways(n):\n    if (n == 0):\n        return 0;\n    if (n == 1):\n        return 1; \n    return get_noOfways(n - 1) + get_noOfways(n - 2);",
+     "similarity": 0.207,
+     "tokens": 75
+    },
+    {
+     "example_id": "mbpp-735",
+     "description": "Write a python function to toggle bits of the number except the first and the last bit.",
+     "code": "def set_middle_bits(n):  \n    n |= n >> 1; \n    n |= n >> 2; \n    n |= n >> 4; \n    n |= n >> 8; \n    n |= n >> 16;  \n    return (n >> 1) ^ 1\ndef toggle_middle_bits(n): \n    if (n == 1): \n        return 1\n    return n ^ set_middle_bits(n) ",
+     "similarity": 0.154,
+     "tokens": 120
+    },
+    {
+     "example_id": "mbpp-545",
+     "description": "Write a python function to toggle only first and last bits of a given number.",
+     "code": "def take_L_and_F_set_bits(n) : \n    n = n | n >> 1\n    n = n | n >> 2\n    n = n | n >> 4\n    n = n | n >> 8\n    n = n | n >> 16 \n    return ((n + 1) >> 1) + 1      \ndef toggle_F_and_L_bits(n) :  \n    if (n == 1) : \n        return 0 \n    return n ^ take_L_and_F_set_bits(n) ",
+     "similarity": 0.14,
+     "tokens": 122
+    },
+    {
+     "example_id": "mbpp-840",
+     "description": "Write a python function to check whether the roots of a quadratic equation are numerically equal but opposite in sign or not.",
+     "code": "def Check_Solution(a,b,c):  \n    if b == 0:  \n        return (\"Yes\")  \n    else: \n        return (\"No\")  ",
+     "similarity": 0.13,
+     "tokens": 77
+    }
+   ]
+  },
+  {
+   "query_id": "q09",
+   "mbpp_id": "mbpp-231",
+   "student_code": "def max_sum(tri, n): \n\tif n > 1: \n\t\ttri[1][1] = tri[1][1]+tri[0][0] \n\t\ttri[1][0] = tri[1][0]+tri[0][0] \n\tfor i in range(2, n): \n\t\ttri[i][0] = tri[i][0] + tri[i-1][0] \n\t\ttri[i][i] = tri[i][i] + tri[i-1][i-1] \n\t\tfor j in range(1, i): \n\t\t\tif tri[i][j]+tri[i-1][j-1] >= tri[i][j]+tri[i-1][j]: \n\t\t\t\ttri[i][j] = tri[i][j] + tri[i-1][j-1] \n\t\t\telse: \n\t\t\t\ttri[i][j] = tri[i][j]+tri[i-1][j] \n\treturn (max(tri[n-1]))",
+   "example_budget": 530,
+   "min_similarity": 0.15,
+   "candidates": [
+    {
+     "example_id": "mbpp-721",
+     "description": "Write a function to find a path with the maximum average over all existing paths for the given square matrix of size n*n.",
+     "code": "M = 100\ndef maxAverageOfPath(cost, N): \n\tdp = [[0 for i in range(N + 1)] for j in range(N + 1)] \n\tdp[0][0] = cost[0][0] \n\tfor i in range(1, N): \n\t\tdp[i][0] = dp[i - 1][0] + cost[i][0] \n\tfor j in range(1, N): \n\t\tdp[0][j] = dp[0][j - 1] + cost[0][j] \n\tfor i in range(1, N): \n\t\tfor j in range(1, N): \n\t\t\tdp[i][j] = max(dp[i - 1][j], \n\t\t\t\t\t\tdp[i][j - 1]) + cost[i][j] \n\treturn dp[N - 1][N - 1] / (2 * N - 1)",
+     "similarity": 0.349,
+     "tokens": 249
+    },
+    {
+     "example_id": "mbpp-1",
+     "description": "Write a function to find the minimum cost path to reach (m, n) from (0, 0) for the given cost matrix cost[][] and a position (m, n) in cost[][].",
+     "code": "R = 3\nC = 3\ndef min_cost(cost, m, n): \n\ttc = [[0 for x in range(C)] for x in range(R)] \n\ttc[0][0] = cost[0][0] \n\tfor i in range(1, m+1): \n\t\ttc[i][0] = tc[i-1][0] + cost[i][0] \n\tfor j in range(1, n+1): \n\t\ttc[0][j] = tc[0][j-1] + cost[0][j] \n\tfor i in range(1, m+1): \n\t\tfor j in range(1, n+1): \n\t\t\ttc[i][j] = min(tc[i-1][j-1], tc[i-1][j], tc[i][j-1]) + cost[i][j] \n\treturn tc[m][n]",
+     "similarity": 0.31,
+     "tokens": 279
+    },
+    {
+     "example_id": "mbpp-608",
+     "description": "Write a python function to find nth bell number.",
+     "code": "def bell_Number(n): \n    bell = [[0 for i in range(n+1)] for j in range(n+1)] \n    bell[0][0] = 1\n    for i in range(1, n+1):\n        bell[i][0] = bell[i-1][i-1]\n        for j in range(1, i+1): \n            bell[i][j] = bell[i-1][j-1] + bell[i][j-1] \n    return bell[n][0] ",
+     "similarity": 0.293,
+     "tokens": 154
+    },
+    {
+     "example_id": "mbpp-912",
+     "description": "Write a function to find ln, m lobb number.",
+     "code": "def binomial_coeff(n, k): \n\tC = [[0 for j in range(k + 1)] \n\t\t\tfor i in range(n + 1)] \n\tfor i in range(0, n + 1): \n\t\tfor j in range(0, min(i, k) + 1): \n\t\t\tif (j == 0 or j == i): \n\t\t\t\tC[i][j] = 1\n\t\t\telse: \n\t\t\t\tC[i][j] = (C[i - 1][j - 1] \n\t\t\t\t\t\t\t+ C[i - 1][j]) \n\treturn C[n][k] \ndef lobb_num(n, m): \n\treturn (((2 * m + 1) *\n\t\tbinomial_coeff(2 * n, m + n)) \n\t\t\t\t\t/ (m + n + 1))",
+     "similarity": 0.197,
+     "tokens": 199
+    },
+    {
+     "example_id": "mbpp-918",
+     "description": "Write a function to count coin change.",
+     "code": "def coin_change(S, m, n): \n    table = [[0 for x in range(m)] for x in range(n+1)] \n    for i in range(m): \n        table[0][i] = 1\n    for i in range(1, n+1): \n        for j in range(m): \n            x = table[i - S[j]][j] if i-S[j] >= 0 else 0\n            y = table[i][j-1] if j >= 1 else 0 \n            table[i][j] = x + y   \n    return table[n][m-1] ",
+     "similarity": 0.191,
+     "tokens": 167
+    },
+    {
+     "example_id": "mbpp-571",
+     "description": "Write a function to find maximum possible sum of disjoint pairs for the given array of integers and a number k.",
+     "code": "def max_sum_pair_diff_lessthan_K(arr, N, K): \n\tarr.sort() \n\tdp = [0] * N \n\tdp[0] = 0\n\tfor i in range(1, N): \n\t\tdp[i] = dp[i-1] \n\t\tif (arr[i] - arr[i-1] < K): \n\t\t\tif (i >= 2): \n\t\t\t\tdp[i] = max(dp[i], dp[i-2] + arr[i] + arr[i-1]); \n\t\t\telse: \n\t\t\t\tdp[i] = max(dp[i], arr[i] + arr[i-1]); \n\treturn dp[N - 1]",
+     "similarity": 0.182,
+     "tokens": 186
+    },
+    {
+     "example_id": "mbpp-747",
+     "description": "Write a function to find the longest common subsequence for the given three string sequence.",
+     "code": "def lcs_of_three(X, Y, Z, m, n, o): \n\tL = [[[0 for i in range(o+1)] for j in range(n+1)] \n\t\tfor k in range(m+1)] \n\tfor i in range(m+1): \n\t\tfor j in range(n+1): \n\t\t\tfor k in range(o+1): \n\t\t\t\tif (i == 0 or j == 0 or k == 0): \n\t\t\t\t\tL[i][j][k] = 0\n\t\t\t\telif (X[i-1] == Y[j-1] and\n\t\t\t\t\tX[i-1] == Z[k-1]): \n\t\t\t\t\tL[i][j][k] = L[i-1][j-1][k-1] + 1\n\t\t\t\telse: \n\t\t\t\t\tL[i][j][k] = max(max(L[i-1][j][k], \n\t\t\t\t\tL[i][j-1][k]), \n\t\t\t\t\t\t\t\t\tL[i][j][k-1]) \n\treturn L[m][n][o]",
+     "similarity": 0.181,
+     "tokens": 282
+    },
+    {
+     "example_id": "mbpp-952",
+     "description": "Write a function to compute the value of ncr mod p.",
+     "code": "def nCr_mod_p(n, r, p): \n\tif (r > n- r): \n\t\tr = n - r \n\tC = [0 for i in range(r + 1)] \n\tC[0] = 1 \n\tfor i in range(1, n + 1): \n\t\tfor j in range(min(i, r), 0, -1): \n\t\t\tC[j] = (C[j] + C[j-1]) % p \n\treturn C[r] ",
+     "similarity": 0.145,
+     "tokens": 135
+    }
+   ]
+  },
+  {
+   "query_id": "q10",
+   "mbpp_id": "mbpp-97",
+   "student_code": "def frequency_lists(list1):\n    list1 = [item for sublist in list1 for item in sublist]\n    dic_data = {}\n    for num in list1:\n        if num in dic_data.keys():\n            dic_data[num] += 1\n        else:\n            key = num\n            value = 1\n            dic_data[key] = value\n    return dic_data\n",
+   "example_budget": 141,
+   "min_similarity": 0.15,
+   "candidates": [
+    {
+     "example_id": "mbpp-966",
+     "description": "Write a function to remove an empty tuple from a list of tuples.",
+     "code": "def remove_empty(tuple1): #L = [(), (), ('',), ('a', 'b'), ('a', 'b', 'c'), ('d')]\n   tuple1 = [t for t in tuple1 if t]\n   return tuple1",
+     "similarity": 0.231,
+     "tokens": 103
+    },
+    {
+     "example_id": "mbpp-652",
+     "description": "Write a function to flatten the given tuple matrix into the tuple list with each tuple representing each column.",
+     "code": "def matrix_to_list(test_list):\n  temp = [ele for sub in test_list for ele in sub]\n  res = list(zip(*temp))\n  return (str(res))",
+     "similarity": 0.229,
+     "tokens": 80
+    },
+    {
+     "example_id": "mbpp-513",
+     "description": "Write a function to convert tuple into list by adding the given string after every element.",
+     "code": "def add_str(test_tup, K):\n  res = [ele for sub in test_tup for ele in (sub, K)]\n  return (res) ",
+     "similarity": 0.178,
+     "tokens": 70
+    },
+    {
+     "example_id": "mbpp-544",
+     "description": "Write a function to flatten the tuple list to a string.",
+     "code": "def flatten_tuple(test_list):\n  res = ' '.join([idx for tup in test_list for idx in tup])\n  return (res) ",
+     "similarity": 0.156,
+     "tokens": 65
+    },
+    {
+     "example_id": "mbpp-632",
+     "description": "Write a python function to move all zeroes to the end of the given list.",
+     "code": "def move_zero(num_list):\n    a = [0 for i in range(num_list.count(0))]\n    x = [ i for i in num_list if i != 0]\n    x.extend(a)\n    return (x)",
+     "similarity": 0.155,
+     "tokens": 87
+    },
+    {
+     "example_id": "mbpp-806",
+     "description": "Write a function to find maximum run of uppercase characters in the given string.",
+     "code": "def max_run_uppercase(test_str):\n  cnt = 0\n  res = 0\n  for idx in range(0, len(test_str)):\n    if test_str[idx].isupper():\n      cnt += 1\n    else:\n      res = cnt\n      cnt = 0\n  if test_str[len(test_str) - 1].isupper():\n    res = cnt\n  return (res)",
+     "similarity": 0.149,
+     "tokens": 108
+    },
+    {
+     "example_id": "mbpp-578",
+     "description": "Write a function to interleave lists of the same length.",
+     "code": "def interleave_lists(list1,list2,list3):\n    result = [el for pair in zip(list1, list2, list3) for el in pair]\n    return result",
+     "similarity": 0.143,
+     "tokens": 67
+    },
+    {
+     "example_id": "mbpp-665",
+     "description": "Write a python function to shift first element to the end of given list.",
+     "code": "def move_last(num_list):\n    a = [num_list[0] for i in range(num_list.count(num_list[0]))]\n    x = [ i for i in num_list if i != num_list[0]]\n    x.extend(a)\n    return (x)",
+     "similarity": 0.143,
+     "tokens": 95
+    }
+   ]
+  }
+ ]
+}
