@@ -79,7 +79,6 @@ Data: MBPP, Austin et al. (2021), CC BY 4.0.
 ├── uv.lock
 ├── .gitignore
 ├── .env             # environment variable NAMEs this plugin needs (none)
-├── run.sh           # exits 0 when this environment can run the plugin
 ├── src/plugin/      # the MCP server (__main__.py, IMPLEMENTATIONS), packer.py, prompting.py, data/
 ├── tests/           # test_verifier.py (correct, wrong, missing, malformed, boundary) and test_packer.py
 ├── ui/              # outputs drawn from their JSON Schema: renderers.js and renderers.css
