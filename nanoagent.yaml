@@ -1,7 +1,7 @@
 _ > nanoagent.plugin.v0001.ManifestConfig:
 id: prompt-context-packer
 name: Prompt Context Packer
-version: 0.1.0
+version: 0.1.1
 status: ready
 spec: nanoagent.plugin/v0001
 
@@ -36,3 +36,4 @@ tasks > dict[contract.Task, nanoagent.plugin.v0001.TaskConfig]:
       Choose a set of candidates that maximises the sum of their similarities, subject to: each at most once, each with similarity at least min_similarity, and base_tokens plus the chosen examples' tokens at most budget_tokens. Adding the most similar examples first is not always best; compare combinations.
       Order the chosen examples most similar first (ties by example_id), call render_prompt with them in that order, and check that within_budget is true.
       Submit the query_id, the skill_level, the example_ids in that order, and the path, total_tokens and similarity_sum exactly as your last render_prompt call returned them.
+      Work out every value yourself, then end by calling the submit tool with them. Never write the answer as a chat message instead: a run that ends without a submit call fails, whatever it wrote.
