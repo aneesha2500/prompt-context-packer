@@ -16,7 +16,7 @@ from .checks import count_tokens, milli, prompt_examples, prompt_path, result
 
 def verify_task(arguments, output, reference, workspace):
     """``output``: a contract PackOutput; ``reference``: the pinned BestOutput."""
-    if output.query_id != arguments.query_id or output.skill_level != arguments.skill_level:
+    if output.query_id != arguments.query_id or output.skill_level != arguments.skill_level.value:
         return result(False, "the selection is for another query or skill level", score=0.0)
     by_id = {c.example_id: c for c in reference.candidates}
     ids = list(output.example_ids)

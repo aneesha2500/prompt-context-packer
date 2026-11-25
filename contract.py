@@ -98,7 +98,8 @@ class BestOutput(Output):
 @dataclass
 class PackOutput(Output):
     query_id: Annotated[str, QUERY_ID]
-    skill_level: Annotated[SkillLevel, "The student's level"]
+    # A plain string, not SkillLevel: RUSH Lab's answer.json template cannot represent an enum-only JSON schema.
+    skill_level: Annotated[str, "The student's level, as given: beginner, intermediate or advanced"]
     example_ids: Annotated[list[str], "The chosen examples in prompt order: most similar first, ties by example_id"]
     path: Annotated[str, "The rendered prompt file, exactly as render_prompt returned it"]
     total_tokens: Annotated[int, "Tokens of the rendered prompt, as render_prompt returned it"]
